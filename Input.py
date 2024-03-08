@@ -25,5 +25,6 @@ def dodaj_wektor(baza_wek):
     wek.y = simpledialog.askfloat("Dodaj wektor", "Podaj współrzędną y:")
     baza_wek.append(wek)
 
-def wybierz_punkt(baza_punkt):
+def wybierz_punkt(baza_punkt, okno):
     for punkt in baza_punkt:
+        b_pkt =  tk.Button(okno, text=f"Punkkt x: {}")
