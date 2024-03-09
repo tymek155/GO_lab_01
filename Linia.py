@@ -1,4 +1,6 @@
-import Punkt
+import copy
+
+import Punkt, Wektor
 import math
 
 class Linia:
@@ -23,17 +25,8 @@ class Linia:
             return False
 
     def sprawdz_przynaleznosc_odcinek(self, spr: type[Punkt]):
-        if spr.x >= self.pkt_1.x and spr.x <= self.pkt_2.x:
-            if self.pkt_1.y < self.pkt_2.y:
-                if spr.y>= self.pkt_1.y and spr.y <= self.pkt_2.y:
-                    self.sprawdz_przynaleznosc_prosta(spr)
-                else:
-                    return False
-            else:
-                if spr.y >= self.pkt_2.y and spr.y <= self.pkt_1.y:
-                    self.sprawdz_przynaleznosc_prosta(spr)
-                else:
-                    return False
+        if spr.x <= self.pkt_2.x and spr.x>= self.pkt_1.x:
+            return self.sprawdz_przynaleznosc_prosta(spr)
         else:
             return False
 
@@ -42,17 +35,21 @@ class Linia:
         y_prosta = wspolczynnik_a*spr.x + wspolczynnik_b
         if spr.y > y_prosta:
             print("Punkt leży po prawej stronie.")
+            return 1
         elif spr.y == y_prosta:
             print("Punkt leży na prostej.")
+            return 2
         else:
             print("Punkt leży po lewej stronie.")
+            return 3
 
-    def translacja_linii(self, wektor: type[Punkt]):
-        self.pkt_1.x = self.pkt_1.x + wektor.x
-        self.pkt_2.x = self.pkt_2.x + wektor.x
+    def translacja_linii(self, wektor : type[Wektor]):
+        wektor_copy = copy.deepcopy(wektor)
+        self.pkt_1.x = self.pkt_1.x + (wektor.pkt_2.x - wektor.pkt_1.x)
+        self.pkt_2.x = self.pkt_2.x + (wektor_copy.pkt_2.x - wektor.pkt_1.x)
 
-        self.pkt_1.y = self.pkt_1.y + wektor.y
-        self.pkt_2.y = self.pkt_2.y + wektor.y
+        self.pkt_1.y = self.pkt_1.y + (wektor.pkt_2.y - wektor.pkt_1.y)
+        self.pkt_2.y = self.pkt_2.y + (wektor_copy.pkt_2.y - wektor.pkt_1.y)
 
     def odbicie_punktu_linia(self, punkt:type [Punkt]):
         A, C = self.rownanie_prostej()

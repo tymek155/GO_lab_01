@@ -1,33 +1,32 @@
-import Punkt, Linia, Input
-import tkinter as tk
-from tkinter import simpledialog
-from tkinter import messagebox
+import Show
+from Punkt import Punkt
+from Linia import Linia
+from Wektor import Wektor
 
 def main():
-    okno = tk.Tk()
-    okno.title("Funkcje dla punktów i linii")
-    baza_pkt = []
-    baza_lin = []
-    baza_wek = []
-    b_dodaj_punkt = tk.Button(okno, text="Dodaj punkt do bazy", command= lambda:Input.dodaj_punkt(baza_pkt))
-    b_dodaj_punkt.pack()
+    punkt1 = Punkt(2,2)
+    punkt2 = Punkt(4,4)
+    punkt3 = Punkt(2,-2)
+    linia = Linia(punkt1, punkt2)
+    wektor = Wektor(punkt1, punkt3)
 
-    b_dodaj_lin = tk.Button(okno, text="Dodaj linię do bazy", command=lambda:Input.dodaj_linie(baza_lin))
-    b_dodaj_lin.pack()
+    #Show.wyswietl_punkt(punkt1)
 
-    b_dodaj_wek = tk.Button(okno, text="Dodaj wektor do bazy", command=lambda:Input.dodaj_wektor(baza_wek))
-    b_dodaj_wek.pack()
+    #Show.wyswietl_linie(linia)
 
+    #Show.wyswietl_wektor(wektor)
 
+    #Show.wyswietl_prosta(linia)
 
-        #print("3. Dodaj wektor do bazy.")
-        #print("4. Wylicz równanie prostej dla danej linii.")
-        #print("5. Sprawdz przynależność punktu do prostej.")
-        #print("6. Sprawdź przynależność punktu do linii (odcinka).")
-        #print("7. Sprawdź położenie punktu względem prostej.")
-        #print("8. Wykonaj translacje linii o wybrany wektor.")
-        #print("9. Odbij punkt względem linii.")
-    okno.mainloop()
+    #Show.wyswietl_prosta_punkt(linia, punkt3, linia.sprawdz_przynaleznosc_prosta(punkt3))
+    #Show.wyswietl_prosta_punkt(linia, punkt1, linia.sprawdz_przynaleznosc_prosta(punkt1))
+
+    #Show.wyswietl_linia_punkt(linia, punkt3, linia.sprawdz_przynaleznosc_odcinek(punkt3))
+
+    #Show.wyswietl_polozenie_pkt_prosta(linia, punkt3, linia.polozenie_pkt_prosta(punkt3))
+
+    #Show.wyswietl_translacja(linia, wektor)
+
 
 
 
@@ -36,3 +35,37 @@ if __name__ == '__main__':
     main()
 
 
+'''
+import tkinter as tk
+from tkinter import simpledialog
+from tkinter import messagebox
+okno = tk.Tk()
+    okno.title("Funkcje dla punktów i linii")
+    baza_pkt = []
+    baza_lin = []
+    baza_wek = []
+
+    ramka_pkt = tk.Frame(okno)
+    ramka_pkt.pack(padx=100)
+
+    b_dodaj_punkt = tk.Button(okno, text="Dodaj punkt do bazy", command= lambda:Input.dodaj_punkt(baza_pkt))
+    b_dodaj_punkt.pack(pady=20)
+
+    b_dodaj_lin = tk.Button(okno, text="Dodaj linię do bazy", command=lambda:Input.dodaj_linie(baza_lin))
+    b_dodaj_lin.pack(pady=20)
+
+    b_dodaj_wek = tk.Button(okno, text="Dodaj wektor do bazy", command=lambda:Input.dodaj_wektor(baza_wek))
+    b_dodaj_wek.pack(pady=20)
+
+    b_
+
+
+
+
+        #print("4. Wylicz równanie prostej dla danej linii.")
+        #print("5. Sprawdz przynależność punktu do prostej.")
+        #print("6. Sprawdź przynależność punktu do linii (odcinka).")
+        #print("7. Sprawdź położenie punktu względem prostej.")
+        #print("8. Wykonaj translacje linii o wybrany wektor.")
+        #print("9. Odbij punkt względem linii.")
+    okno.mainloop()'''
