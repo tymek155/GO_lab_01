@@ -47,10 +47,10 @@ class Linia:
     def translacja_linii(self, wektor: type[Wektor]):
         wektor_copy = copy.deepcopy(wektor)
         self.pkt_1.x = self.pkt_1.x + (wektor.pkt_2.x - wektor.pkt_1.x)
-        self.pkt_2.x = self.pkt_2.x + (wektor_copy.pkt_2.x - wektor.pkt_1.x)
+        self.pkt_2.x = self.pkt_2.x + (wektor_copy.pkt_2.x - wektor_copy.pkt_1.x)
 
         self.pkt_1.y = self.pkt_1.y + (wektor.pkt_2.y - wektor.pkt_1.y)
-        self.pkt_2.y = self.pkt_2.y + (wektor_copy.pkt_2.y - wektor.pkt_1.y)
+        self.pkt_2.y = self.pkt_2.y + (wektor_copy.pkt_2.y - wektor_copy.pkt_1.y)
 
     def odbicie_punktu_linia(self, punkt: type[Punkt]):
         A, C = self.rownanie_prostej()
