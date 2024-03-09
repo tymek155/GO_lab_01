@@ -6,7 +6,7 @@ from Wektor import Wektor
 def main():
     punkt1 = Punkt(2,2)
     punkt2 = Punkt(4,4)
-    punkt3 = Punkt(-2,4)
+    punkt3 = Punkt(0,-2)
     linia = Linia(punkt1, punkt2)
     wektor = Wektor(punkt1, punkt3)
 
@@ -30,11 +30,15 @@ def main():
     Show.wyswietl_odb_pkt(punkt3, linia)
 
 
-
-
-
 if __name__ == '__main__':
     main()
+
+
+
+
+
+
+
 
 
 '''

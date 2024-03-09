@@ -32,8 +32,8 @@ def wyswietl_wektor(wektor):
     plt.show()
 
 def wyswietl_prosta_short(linia):
-    xmi = -100
-    xma = 100
+    xmi = -50
+    xma = 50
     x = [xmi,xma]
     a,b = linia.rownanie_prostej()
     y = [a*xmi +b, a*xma + b]
@@ -53,8 +53,8 @@ def wyswietl_prosta(linia):
     plt.show()
 
 def wyswietl_prosta_punkt(linia, punkt, spr):
-    xmi = -100
-    xma = 100
+    xmi = -50
+    xma = 50
     x = [xmi, xma]
     a, b = linia.rownanie_prostej()
     y = [a * xmi + b, a * xma + b]
@@ -84,8 +84,8 @@ def wyswietl_linia_punkt(linia, punkt, spr):
     plt.show()
 
 def wyswietl_polozenie_pkt_prosta(linia, punkt, spr):
-    xmi = -100
-    xma = 100
+    xmi = -50
+    xma = 50
     x = [xmi, xma]
     a, b = linia.rownanie_prostej()
     y = [a * xmi + b, a * xma + b]
@@ -112,8 +112,10 @@ def wyswietl_translacja(linia, wektor):
     wyswietl_prosta(linia)
 
 def wyswietl_odb_pkt(punkt, linia):
-    plt.scatter(punkt.x, punkt.y, color="blue")
+    plt.scatter(punkt.x, punkt.y, s=1, color="blue")
     wektor = linia.odbicie_punktu_linia(punkt)
+    if wektor is None:
+        return None
     wyswietl_wektor_short(wektor)
-    plt.scatter(wektor.pkt_2.x, wektor.pkt_2.y, color="blue")
+    plt.scatter(wektor.pkt_2.x, wektor.pkt_2.y, s=1, color="blue")
     wyswietl_prosta(linia)

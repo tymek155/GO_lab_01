@@ -64,6 +64,7 @@ class Linia:
             wek_x = A
             wek_y = B
         else:
+            print("Błąd, punkt na prostej")
             return None
 
         odleglosc = (abs(A * punkt.x + B * punkt.y + C)) / (math.sqrt(A * A + B * B))
