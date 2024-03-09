@@ -110,6 +110,10 @@ def wyswietl_translacja(linia, wektor):
     wyswietl_wektor_short(wektor)
     linia.translacja_linii(wektor)
     wyswietl_prosta(linia)
-    '''
-        
-    '''
+
+def wyswietl_odb_pkt(punkt, linia):
+    plt.scatter(punkt.x, punkt.y, color="blue")
+    wektor = linia.odbicie_punktu_linia(punkt)
+    wyswietl_wektor_short(wektor)
+    plt.scatter(wektor.pkt_2.x, wektor.pkt_2.y, color="blue")
+    wyswietl_prosta(linia)

@@ -6,7 +6,7 @@ from Wektor import Wektor
 def main():
     punkt1 = Punkt(2,2)
     punkt2 = Punkt(4,4)
-    punkt3 = Punkt(2,-2)
+    punkt3 = Punkt(-2,4)
     linia = Linia(punkt1, punkt2)
     wektor = Wektor(punkt1, punkt3)
 
@@ -26,6 +26,8 @@ def main():
     #Show.wyswietl_polozenie_pkt_prosta(linia, punkt3, linia.polozenie_pkt_prosta(punkt3))
 
     #Show.wyswietl_translacja(linia, wektor)
+
+    Show.wyswietl_odb_pkt(punkt3, linia)
 
 
 
