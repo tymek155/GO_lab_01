@@ -34,12 +34,12 @@ class Linia:
     def polozenie_pkt_prosta(self, spr: type[Punkt]):
         wspolczynnik_a, wspolczynnik_b = self.rownanie_prostej()
         y_prosta = wspolczynnik_a * spr.x + wspolczynnik_b
-        if spr.y > y_prosta:
-            print("Punkt leży po prawej stronie.")
-            return 1
-        elif spr.y == y_prosta:
+        if y_prosta <= spr.y + 0.001 and y_prosta >= spr.y - 0.001:
             print("Punkt leży na prostej.")
             return 2
+        elif spr.y > y_prosta:
+            print("Punkt leży po prawej stronie.")
+            return 1
         else:
             print("Punkt leży po lewej stronie.")
             return 3

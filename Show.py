@@ -32,8 +32,8 @@ def wyswietl_wektor(wektor):
     plt.show()
 
 def wyswietl_prosta_short(linia):
-    xmi = -50
-    xma = 50
+    xmi = -100
+    xma = 100
     x = [xmi,xma]
     a,b = linia.rownanie_prostej()
     y = [a*xmi +b, a*xma + b]
@@ -65,9 +65,9 @@ def wyswietl_prosta_punkt(linia, punkt, spr):
     plt.title("Układ współrzędnych")
     plt.grid(True)
     if spr == True:
-        plt.text(punkt.x + 0.25, punkt.y + 0.1, "Punkt znajduje się na prostej", horizontalalignment="center")
+        plt.text(punkt.x + 0.25, punkt.y + 0.1*abs(punkt.y), "Punkt znajduje się na prostej", horizontalalignment="center")
     else:
-        plt.text(punkt.x + 0.25, punkt.y + 0.1, "Punkt nie znajduje się na prostej", horizontalalignment="center")
+        plt.text(punkt.x + 0.25, punkt.y + 0.1*abs(punkt.y), "Punkt nie znajduje się na prostej", horizontalalignment="center")
     plt.show()
 
 def wyswietl_linia_punkt(linia, punkt, spr):
