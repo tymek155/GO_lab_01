@@ -162,7 +162,9 @@ def wyswietl_przeciecie_prostych(prosta1, prosta2):
         wyswietl_prosta(prosta2)
     else:
         wyswietl_prosta_short(prosta2)
-        plt.axis('square')
+        #plt.axis('square')
+        plt.xlim(prosta1.pkt_1.x - 5 * abs(prosta1.pkt_1.x), prosta1.pkt_1.x + 5 * abs(prosta1.pkt_1.x))
+        plt.ylim(prosta1.pkt_1.y - 5 * abs(prosta1.pkt_1.y), prosta1.pkt_1.y + 5 * abs(prosta1.pkt_1.y))
         wyswietl_punkt(punkt_przeciecia)
 
 def wyswietl_przeciecie_linii(linia1, linia2):
@@ -172,12 +174,10 @@ def wyswietl_przeciecie_linii(linia1, linia2):
         wyswietl_linie_short(linia2)
         plt.xlim(linia1.pkt_1.x - 5*abs(linia1.pkt_1.x), linia1.pkt_1.x + 5*abs(linia1.pkt_1.x))
         plt.ylim(linia1.pkt_1.y - 5*abs(linia1.pkt_1.y), linia1.pkt_1.y + 5*abs(linia1.pkt_1.y))
-        plt.axis('square')
         wyswietl_punkt(punkt_przeciecia)
     else:
         plt.xlim(linia1.pkt_1.x - 5*abs(linia1.pkt_1.x), linia1.pkt_1.x + 5*abs(linia1.pkt_1.x))
         plt.ylim(linia1.pkt_1.y - 5*abs(linia1.pkt_1.y), linia1.pkt_1.y + 5*abs(linia1.pkt_1.y))
-        #plt.axis('square')
         wyswietl_linie(linia2)
 
 def wyswietl_punkt_prosta_odleglosc(punkt, prosta):
