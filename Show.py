@@ -200,6 +200,27 @@ def wyswietl_trojkat(trojkat):
     plt.plot(x, y, 'b')
     plt.xlabel("OŚ X")
     plt.ylabel("OŚ Y")
+    pole = trojkat.pole_trojkata()
+    round(pole, 1)
+    plt.text(trojkat.t1.x, trojkat.t1.y + 0.1, "Pole trojkata wynosi: " + str(round(pole,4)), fontweight = "bold", color = "blue")
+    plt.title("Układ współrzędnych")
+    plt.grid(True)
+    ax = plt.gca()
+    ax.set_aspect('equal', adjustable='box')
+    plt.axis('square')
+    plt.show()
+
+def wyswietl_pole_linii(linia1, linia2, linia3):
+    wyswietl_linie_short(linia1)
+    wyswietl_linie_short(linia2)
+    wyswietl_linie_short(linia3)
+    pole = linia1.pole_trzy_linie(linia2, linia3)
+    if pole == None:
+        plt.text(linia1.pkt_1.x, linia1.pkt_1.y +0.1, "Linie nie przecinaja się! ", fontweight = "bold", color = "blue")
+    else:
+        plt.text(linia1.pkt_1.x, linia1.pkt_1.y + 0.1, "Pole wynosi: " + str(round(pole,4)), fontweight = "bold", color = "blue")
+    plt.xlabel("OŚ X")
+    plt.ylabel("OŚ Y")
     plt.title("Układ współrzędnych")
     plt.grid(True)
     ax = plt.gca()

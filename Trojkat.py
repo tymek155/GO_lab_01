@@ -1,4 +1,5 @@
 import Punkt
+import math
 from Punkt import Punkt
 
 class Trojkat:
@@ -28,3 +29,11 @@ class Trojkat:
             self.t1 = p1
             self.t2 = p2
             self.t3 = p3
+
+    def pole_trojkata(self):
+        bok_a = self.t1.oblicz_dlugosc(self.t2)
+        bok_b = self.t2.oblicz_dlugosc(self.t3)
+        bok_c = self.t3.oblicz_dlugosc(self.t1)
+        p = (bok_a + bok_b + bok_c)/2
+
+        return math.sqrt(p*(p-bok_a)*(p-bok_b)*(p-bok_c))

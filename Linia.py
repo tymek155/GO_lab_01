@@ -5,6 +5,8 @@ from matplotlib import pyplot as plt
 
 import Punkt
 import Wektor
+import Trojkat
+from Trojkat import Trojkat
 from Punkt import Punkt
 from Wektor import Wektor
 
@@ -195,3 +197,24 @@ class Linia:
 
         linia_laczaca = Linia(punkt, punkt_lin)
         return linia_laczaca, odleglosc
+
+    def pole_trzy_linie(self, linia2, linia3):
+        check = self.przeciecie_linii(linia2)
+        if check == False:
+            print("Linie nie przecinają się!")
+            return None
+        p1 = self.przeciecie_prostych(linia2)
+
+        check = linia2.przeciecie_linii(linia3)
+        if check == False:
+            print("Linie nie przecinają się!")
+            return None
+        p2 = linia2.przeciecie_prostych(linia3)
+
+        check = linia3.przeciecie_linii(self)
+        if check == False:
+            print("Linie nie przecinają się!")
+            return None
+        p3 = linia3.przeciecie_prostych(self)
+        trojkat_pkt = Trojkat(p1,p2,p3)
+        return trojkat_pkt.pole_trojkata()
