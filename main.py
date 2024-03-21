@@ -3,6 +3,8 @@ from Trojkat import Trojkat
 from Punkt import Punkt
 from Linia import Linia
 from Wektor import Wektor
+from Wielokat import Wielokat
+
 
 def main():
     #LAB1
@@ -58,13 +60,45 @@ def main():
     #trojkat1 = Trojkat(punkt1, punkt2, punkt3)
     #Show.wyswietl_trojkat(trojkat1)
 
-    punkt4 = Punkt(2, 11)
-    punkt5 = Punkt(2, 2)
-    punkt6 = Punkt(3, 1)
-    linia1 = Linia(punkt4, punkt5)
-    linia2 = Linia(punkt5, punkt6)
-    linia3 = Linia(punkt6, punkt4)
-    Show.wyswietl_pole_linii(linia1, linia2, linia3)
+    #punkt4 = Punkt(2, 11)
+    #punkt5 = Punkt(2, 2)
+    #punkt6 = Punkt(3, 1)
+    #punkt7 = Punkt(2, 1) # 1 1
+    #linia1 = Linia(punkt4, punkt7)
+    #linia2 = Linia(punkt5, punkt6)
+    #linia3 = Linia(punkt6, punkt4)
+    #Show.wyswietl_pole_linii(linia1, linia2, linia3)
+
+    #punkt1 = Punkt(3,10)
+    #punkt2 = Punkt(3, 3)
+    #punkt3 = Punkt(0,0)
+    #trojkat1 = Trojkat(punkt1, punkt2, punkt3)
+    #punkt8 = Punkt(2, 3)
+    #Show.wyswietl_przynaleznosc_punktu_pole(trojkat1, punkt8)
+
+    #punkt1 = Punkt(0,2)
+    #punkt2 = Punkt(2, 10)
+    #punkt3 = Punkt(6,0)
+    #trojkat1 = Trojkat(punkt1, punkt2, punkt3)
+    #punkt8 = Punkt(4, 5)
+    #Show.wyswietl_przynaleznosc_punktu_strona(trojkat1, punkt8)
+
+    punkt1 = Punkt(0,2)
+    punkt2 = Punkt(2, 10)
+    punkt3 = Punkt(6,0)
+    punkt8 = Punkt(3, 3)
+    punkt9 = Punkt(3,4)
+    punkt_spr = Punkt(4, 4)
+
+    linia1 = Linia(punkt1, punkt2)
+    linia2 = Linia(punkt2, punkt3)
+    linia3 = Linia(punkt3, punkt8)
+    linia4 = Linia(punkt8, punkt9)
+    linia5 = Linia(punkt9, punkt1)
+    wielokat = Wielokat([punkt1, punkt2, punkt3, punkt8, punkt9])
+    Show.wyswietl_wielokat(wielokat)
+    wielokat.sprawdz_przynaleznosc_punktu(punkt_spr)
+    #wielokat.sprawdz_przeciecia()
 
 
 if __name__ == '__main__':

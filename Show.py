@@ -225,5 +225,42 @@ def wyswietl_pole_linii(linia1, linia2, linia3):
     plt.grid(True)
     ax = plt.gca()
     ax.set_aspect('equal', adjustable='box')
-    plt.axis('square')
+    plt.axis('equal')
     plt.show()
+
+def wyswietl_przynaleznosc_punktu_pole(trojkat, punkt):
+     wyswietl_linie_short(Linia(punkt, trojkat.t1))
+     wyswietl_linie_short(Linia(punkt, trojkat.t2))
+     wyswietl_linie_short(Linia(punkt, trojkat.t3))
+     plt.scatter(punkt.x, punkt.y, color="blue")
+     opt = trojkat.przynaleznosc_punktu_pole(punkt)
+     if opt == True:
+         plt.text(trojkat.t2.x, trojkat.t2.y + 0.1, "Punkt należy do trójkąta!", fontweight="bold", color="orange")
+     else:
+         plt.text(trojkat.t2.x, trojkat.t2.y + 0.1, "Punkt nie należy do trójkąta!", fontweight="bold", color="orange")
+
+     plt.axis('square')
+     wyswietl_trojkat(trojkat)
+
+
+def wyswietl_przynaleznosc_punktu_strona(trojkat, punkt):
+    wyswietl_linie_short(Linia(punkt, trojkat.t1))
+    wyswietl_linie_short(Linia(punkt, trojkat.t2))
+    wyswietl_linie_short(Linia(punkt, trojkat.t3))
+    plt.scatter(punkt.x, punkt.y, color="blue")
+    opt = trojkat.przynaleznosc_punktu_strona(punkt)
+    if opt == True:
+        plt.text(trojkat.t2.x, trojkat.t2.y + 0.1, "Punkt należy do trójkąta!", fontweight="bold", color="orange")
+    else:
+        plt.text(trojkat.t2.x, trojkat.t2.y + 0.1, "Punkt nie należy do trójkąta!", fontweight="bold", color="orange")
+
+    plt.axis('square')
+    wyswietl_trojkat(trojkat)
+
+def wyswietl_wielokat(wielokat):
+    if wielokat.sprawdz_przeciecia() == False:
+        return None
+    for i in range(0, len(wielokat.punkty) -1):
+        wyswietl_linie_short(Linia(wielokat.punkty[i], wielokat.punkty[i+1]))
+    plt.axis('square')
+    wyswietl_linie(Linia(wielokat.punkty[0], wielokat.punkty[len(wielokat.punkty)-1]))

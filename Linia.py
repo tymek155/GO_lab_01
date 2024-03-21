@@ -4,21 +4,21 @@ import math
 from matplotlib import pyplot as plt
 
 import Punkt
+#import Trojkat
 import Wektor
-import Trojkat
-from Trojkat import Trojkat
+#import Trojkat
+#from Trojkat import Trojkat
 from Punkt import Punkt
 from Wektor import Wektor
 
 
 class Linia:
     def __init__(self, a: type[Punkt], b: type[Punkt]):
-        if a.x < b.x:
-            self.pkt_1 = a
-            self.pkt_2 = b
-        else:
-            self.pkt_1 = b
-            self.pkt_2 = a
+        self.pkt_1 = a
+        self.pkt_2 = b
+
+    def __eq__l__(self, other):
+        return self.pkt_1.__eq__n__(other.pkt_1) and self.pkt_2.__eq__n__(other.pkt_2)
 
     def rownanie_prostej(self):
         if self.pkt_1.x == self.pkt_2.x:
@@ -55,27 +55,27 @@ class Linia:
             return False
 
     def polozenie_pkt_prosta(self, spr: type[Punkt]):
-        wspolczynnik_a, wspolczynnik_b = self.rownanie_prostej()
-        if wspolczynnik_a == 0 and wspolczynnik_b == 0:
+        A, B, C = self.rownanie_ogolne()
+        if B == 0:
             if self.pkt_1.x == spr.x:
                 print("Punkt leży na prostej.")
                 return 2
-            elif self.pkt_1.x < spr.x:
-                print("Punkt leży po prawej stronie.")
+            elif self.pkt_1.x > spr.x:
+                print("Punkt leży po lewej stronie.")
                 return 1
             else:
-                print("Punkt leży po lewej stronie.")
+                print("Punkt leży po prawej stronie.")
                 return 3
 
-        y_prosta = wspolczynnik_a * spr.x + wspolczynnik_b
-        if y_prosta <= spr.y + 0.001 and y_prosta >= spr.y - 0.001:
+        wynik = A*spr.x + B*spr.y + C
+        if wynik == 0:
             print("Punkt leży na prostej.")
             return 2
-        elif spr.y > y_prosta:
-            print("Punkt leży po prawej stronie.")
+        elif wynik > 0:
+            print("Punkt leży po lewej stronie.")
             return 1
         else:
-            print("Punkt leży po lewej stronie.")
+            print("Punkt leży po prawej stronie.")
             return 3
 
     def translacja_linii(self, wektor: type[Wektor]):
@@ -147,12 +147,43 @@ class Linia:
 
     def przeciecie_linii(self, linia2):
         punkt = self.przeciecie_prostych(linia2)
+        psx1 = min(self.pkt_1.x, self.pkt_2.x)
+        psx2 = max(self.pkt_1.x, self.pkt_2.x)
+
+        psy1 = min(self.pkt_1.y, self.pkt_2.y)
+        psy2 = max(self.pkt_1.y, self.pkt_2.y)
         if(punkt != None):
-            if punkt.x >= self.pkt_1.x and punkt.x <= self.pkt_2.x and punkt.y >= self.pkt_1.y and punkt.y <= self.pkt_2.y:
-                if punkt.x >= linia2.pkt_1.x and punkt.x <= linia2.pkt_2.x and punkt.y >= linia2.pkt_1.y and punkt.y <= linia2.pkt_2.y:
+            if punkt.x >= psx1 and punkt.x <= psx2 and punkt.y >= psy1 and punkt.y <= psy2:
+                plx1 = min(linia2.pkt_1.x, linia2.pkt_2.x)
+                plx2 = max(linia2.pkt_1.x, linia2.pkt_2.x)
+
+                ply1 = min(linia2.pkt_1.y, linia2.pkt_2.y)
+                ply2 = max(linia2.pkt_1.y, linia2.pkt_2.y)
+
+                if punkt.x >= plx1 and punkt.x <= plx2 and punkt.y >= ply1 and punkt.y <= ply2:
                     print("Punkt lezy na przecieciu linii!")
                     return True
         return False
+
+    def przeciecie_linii_ret_pkt(self, linia2):
+        punkt = self.przeciecie_prostych(linia2)
+        psx1 = min(self.pkt_1.x, self.pkt_2.x)
+        psx2 = max(self.pkt_1.x, self.pkt_2.x)
+
+        psy1 = min(self.pkt_1.y, self.pkt_2.y)
+        psy2 = max(self.pkt_1.y, self.pkt_2.y)
+        if(punkt != None):
+            if punkt.x >= psx1 and punkt.x <= psx2 and punkt.y >= psy1 and punkt.y <= psy2:
+                plx1 = min(linia2.pkt_1.x, linia2.pkt_2.x)
+                plx2 = max(linia2.pkt_1.x, linia2.pkt_2.x)
+
+                ply1 = min(linia2.pkt_1.y, linia2.pkt_2.y)
+                ply2 = max(linia2.pkt_1.y, linia2.pkt_2.y)
+
+                if punkt.x >= plx1 and punkt.x <= plx2 and punkt.y >= ply1 and punkt.y <= ply2:
+                    print("Punkt lezy na przecieciu linii!")
+                    return True, punkt
+        return False, None
 
     def punkt_prosta_odlg(self, punkt):
         A,B, C = self.rownanie_ogolne()
@@ -216,5 +247,5 @@ class Linia:
             print("Linie nie przecinają się!")
             return None
         p3 = linia3.przeciecie_prostych(self)
-        trojkat_pkt = Trojkat(p1,p2,p3)
+        trojkat_pkt = Trojkat.Trojkat(p1,p2,p3)
         return trojkat_pkt.pole_trojkata()
