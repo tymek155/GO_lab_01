@@ -1,4 +1,5 @@
 import matplotlib.pyplot as plt
+import Trojkat
 from Linia import Linia
 
 def powrot_do_menu():
@@ -214,7 +215,7 @@ def wyswietl_pole_linii(linia1, linia2, linia3):
     wyswietl_linie_short(linia1)
     wyswietl_linie_short(linia2)
     wyswietl_linie_short(linia3)
-    pole = linia1.pole_trzy_linie(linia2, linia3)
+    pole = Trojkat.pole_trzy_linie(linia1, linia2, linia3)
     if pole == None:
         plt.text(linia1.pkt_1.x, linia1.pkt_1.y +0.1, "Linie nie przecinaja się! ", fontweight = "bold", color = "blue")
     else:
@@ -264,3 +265,12 @@ def wyswietl_wielokat(wielokat):
         wyswietl_linie_short(Linia(wielokat.punkty[i], wielokat.punkty[i+1]))
     plt.axis('square')
     wyswietl_linie(Linia(wielokat.punkty[0], wielokat.punkty[len(wielokat.punkty)-1]))
+
+def wyswietl_wielokat_punkt(wielokat, punkt):
+    opt = wielokat.sprawdz_przynaleznosc_punktu(punkt)
+    if opt == True:
+        plt.text(wielokat.punkty[0].x, wielokat.punkty[0].y - 0.25, "Punkt należy do wielokąta!", fontweight="bold", color="orange")
+    else:
+        plt.text(wielokat.punkty[0].x, wielokat.punkty[0].y - 0.25, "Punkt nie należy do wielokąta!", fontweight="bold", color="orange")
+    plt.scatter(punkt.x, punkt.y, color="blue")
+    wyswietl_wielokat(wielokat)

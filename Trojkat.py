@@ -80,3 +80,24 @@ class Trojkat:
                 return True
             else:
                 return False
+
+def pole_trzy_linie(linia1, linia2, linia3):
+    check = linia1.przeciecie_linii(linia2)
+    if check == False:
+        print("Linie nie przecinają się!")
+        return None
+    p1 = linia1.przeciecie_prostych(linia2)
+
+    check = linia2.przeciecie_linii(linia3)
+    if check == False:
+        print("Linie nie przecinają się!")
+        return None
+    p2 = linia2.przeciecie_prostych(linia3)
+
+    check = linia3.przeciecie_linii(linia1)
+    if check == False:
+        print("Linie nie przecinają się!")
+        return None
+    p3 = linia3.przeciecie_prostych(linia1)
+    trojkat_pkt = Trojkat(p1,p2,p3)
+    return trojkat_pkt.pole_trojkata()
